@@ -154,6 +154,9 @@ Future<void> runExpenseApp(String username) async {
       // Delete an expense ****Bua****
 
       // Exit ****Bua****
+       case '6': // Exit
+        print('----- Bye -----');
+        return;
 
       default:
         print("Invalid choice!");
