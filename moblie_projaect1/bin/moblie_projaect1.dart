@@ -125,9 +125,30 @@ Future<void> runExpenseApp(String username) async {
           print('Total expenses = ${total.toInt()} THB');
         }
         break;
-        
+
       // Search expense ****Gus****
 
+      case '3': // Search expense
+        stdout.write('Item to search: ');
+        String? searchTerm = stdin.readLineSync();
+        if (searchTerm != null && searchTerm.isNotEmpty) {
+          List<Expense> expenses = await fetchExpenses(username);
+          var found = expenses
+              .where(
+                (e) => e.item.toLowerCase().contains(searchTerm.toLowerCase()),
+              )
+              .toList();
+          if (found.isEmpty) {
+            print('No item: $searchTerm');
+          } else {
+            for (var expense in found) {
+              print(
+                '${expense.id}. ${expense.item} : ${expense.amount} THB : ${expense.date}',
+              );
+            }
+          }
+        }
+        break;
       // Add new expense ****Bua****
 
       // Delete an expense ****Bua****
