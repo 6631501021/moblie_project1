@@ -152,7 +152,19 @@ Future<void> runExpenseApp(String username) async {
       // Add new expense ****Bua****
 
       // Delete an expense ****Bua****
-
+       case '5': // Delete an expense
+        stdout.write('Item id: ');
+        int? id = int.tryParse(stdin.readLineSync() ?? '');
+        if (id != null) {
+          final url = Uri.parse('http://localhost:3000/expense/$id');
+          final response = await http.delete(url);
+          if (response.statusCode == 200) {
+            print('Deleted!');
+          } else {
+            print('Item not found!');
+          }
+        }
+        break;
       // Exit ****Bua****
 
       default:
