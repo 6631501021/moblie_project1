@@ -84,7 +84,23 @@ Future<void> runExpenseApp(String username) async {
     print('');
 
     switch (choice) {
+      
       // All expenses ****Gus****
+      case '1': 
+        List<Expense> expenses = await fetchExpenses(username);
+        if (expenses.isEmpty) {
+          print('No expenses recorded.');
+        } else {
+          double total = 0;
+          for (var expense in expenses) {
+            print(
+              '${expense.id}. ${expense.item} : ${expense.amount} THB : ${expense.date}',
+            );
+            total += expense.amount;
+          }
+          print('Total expenses = ${total.toInt()} THB');
+        }
+        break;
 
       // Today's expense ****Gus****
 
@@ -92,7 +108,7 @@ Future<void> runExpenseApp(String username) async {
 
       // Add new expense ****Bua****
 
-      // Delete an expense ****Gus****
+      // Delete an expense ****Bua****
 
       // Exit ****Bua****
 
