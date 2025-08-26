@@ -67,3 +67,37 @@ Future<List<Expense>> fetchExpenses(String username) async {
     return [];
   }
 }
+
+Future<void> runExpenseApp(String username) async {
+  while (true) {
+    print('\n${'=' * 20} Expense Tracking App ${'=' * 20}');
+    print('Welcome $username');
+    print('1. All expenses');
+    print('2. Today\'s expense');
+    print('3. Search expense');
+    print('4. Add new expense');
+    print('5. Delete an expense');
+    print('6. Exit');
+    stdout.write('Choose: ');
+
+    String? choice = stdin.readLineSync();
+    print('');
+
+    switch (choice) {
+      // All expenses ****Gus****
+
+      // Today's expense ****Gus****
+
+      // Search expense ****Gus****
+
+      // Add new expense ****Bua****
+
+      // Delete an expense ****Gus****
+
+      // Exit ****Bua****
+
+      default:
+        print("Invalid choice!");
+    }
+  }
+}
