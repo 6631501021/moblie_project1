@@ -150,7 +150,28 @@ Future<void> runExpenseApp(String username) async {
         }
         break;
       // Add new expense ****Bua****
-
+  case '4': // Add new expense
+        stdout.write('Item: ');
+        String? item = stdin.readLineSync();
+        stdout.write('Paid: ');
+        double? amount = double.tryParse(stdin.readLineSync() ?? '');
+        if (item != null && item.isNotEmpty && amount != null) {
+          final url = Uri.parse('http://localhost:3000/expense');
+          final body = {
+            'username': username,
+            'item': item,
+            'paid': amount.toString(),
+          }; // Convert double to String
+          final response = await http.post(url, body: body);
+          if (response.statusCode == 200) {
+            print('Inserted!');
+          } else {
+            print('Failed to add expense: ${response.body}');
+          }
+        } else {
+          print('Invalid input!');
+        }
+        break;
       // Delete an expense ****Bua****
 
       // Exit ****Bua****
