@@ -187,6 +187,9 @@ Future<void> runExpenseApp(String username) async {
         }
         break;
       // Exit ****Bua****
+       case '6': // Exit
+        print('----- Bye -----');
+        return;
 
       default:
         print("Invalid choice!");
